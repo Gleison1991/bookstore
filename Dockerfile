@@ -1,4 +1,3 @@
-# python-base configura todas as variáveis de ambiente compartilhadas
 FROM python:3.12.1-slim as python-base
 
 ENV PYTHONUNBUFFERED=1 \
@@ -14,9 +13,9 @@ ENV PYTHONUNBUFFERED=1 \
 
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y curl build-essential \
-    && pip install poetry
+RUN apt-get update && apt-get upgrade -y \
+    && apt-get install --no-install-recommends -y curl build-essential libpq-dev gcc \
+    && pip install poetry psycopg2
 
 WORKDIR $PYSETUP_PATH
 COPY poetry.lock pyproject.toml ./
