@@ -32,8 +32,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'fred-bookstore-api-053ff58d93f1.herokuapp.com',
-    'fredmelchior.pythonanywhere.com'
+    'ebac-bookstore-api.herokuapp.com',
+    'Gleison1991.pythonanywhere.com'
 ]
 
 
