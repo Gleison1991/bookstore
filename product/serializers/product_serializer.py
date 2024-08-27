@@ -1,12 +1,10 @@
 from rest_framework import serializers
 from product.models.category import Category
-
 from product.models.product import Product
 from product.serializers.category_serializer import CategorySerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
-
     category = CategorySerializer(required=False, many=True)
     categories_id = serializers.PrimaryKeyRelatedField(
         queryset=Category.objects.all(), write_only=True, many=True
@@ -25,9 +23,10 @@ class ProductSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         category_data = validated_data.pop("categories_id")
-
         product = Product.objects.create(**validated_data)
-        for category in category_data:
-            product.category.add(Category)
 
-        return Product
+        for category_id in category_data:
+            category = Category.objects.get(id=category_id.id)
+            product.category.add(category)
+
+        return product
