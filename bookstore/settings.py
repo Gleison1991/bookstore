@@ -33,7 +33,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'ebac-bookstore-332048bac0d6.herokuapp.com',
-    'Gleison1991.pythonanywhere.com'
+    'gleison.pythonanywhere.com'
 ]
 
 
